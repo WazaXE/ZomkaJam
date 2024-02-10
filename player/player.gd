@@ -26,12 +26,12 @@ func _process(delta):
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite2D.play()
 	else:
-		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.animation = "idle"
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
 	if velocity.x != 0: #Not standing still
-		$AnimatedSprite2D.animation = "walk"
+		$AnimatedSprite2D.animation = "walk-LR"
 		$AnimatedSprite2D.flip_v = false
 		# If moving less than zero (left) then flip sprite
 		$AnimatedSprite2D.flip_h = velocity.x < 0
