@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://buafetqttwyrg"]
+[gd_scene load_steps=19 format=3 uid="uid://buafetqttwyrg"]
 
 [ext_resource type="Texture2D" uid="uid://dyxxr1dpc4223" path="res://WordArt/DungeonEnvironment_V1.png" id="1_kpns1"]
 [ext_resource type="Texture2D" uid="uid://bgl8ag21n5khj" path="res://WordArt/PointLight.png" id="2_g8nod"]
 [ext_resource type="Texture2D" uid="uid://dubj0sg3fn1ho" path="res://EnemyArt/Slime.png" id="3_3o581"]
 [ext_resource type="Script" path="res://EnemySlime.gd" id="3_riqjc"]
+[ext_resource type="PackedScene" uid="uid://ck3cdn0p67lui" path="res://player/player.tscn" id="5_xoayw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5x5gb"]
 texture = ExtResource("1_kpns1")
@@ -175,6 +176,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l4fyb"]
+radius = 10.7999
 
 [node name="WorldArtTesting" type="Node2D"]
 position = Vector2(3, 0)
@@ -241,6 +243,12 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Slime/Detection_Area"]
 scale = Vector2(13.3369, 12.3155)
 shape = SubResource("CircleShape2D_l4fyb")
+debug_color = Color(0, 0.588235, 0.756863, 0.419608)
+
+[node name="Player" parent="." instance=ExtResource("5_xoayw")]
+z_index = 1
+position = Vector2(489, 331)
+metadata/_edit_group_ = true
 
 [connection signal="body_entered" from="Enemy_Slime/Detection_Area" to="Enemy_Slime" method="_on_detection_area_body_entered"]
 [connection signal="body_shape_exited" from="Enemy_Slime/Detection_Area" to="Enemy_Slime" method="_on_detection_area_body_shape_exited"]

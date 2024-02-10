@@ -25,3 +25,7 @@ func _on_detection_area_body_entered(body):
 func _on_detection_area_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	player = null
 	player_chase = false
+
+
+func _on_player_body_entered(body):
+	pass # Replace with function body.

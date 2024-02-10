@@ -1,4 +1,5 @@
 extends Area2D
+signal hit #This signals that collider "hit" and enemy. Detect Collision
 
 @export var speed = 200
 var screen_size
@@ -11,32 +12,30 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var velocity = Vector2.ZERO # The player's movement vector.
+	var velocity = Vector2.ZERO
+	var animation = "idle"
 
-	if Input.is_action_pressed("move_right"): #Returns true if pressed
+	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
-	if Input.is_action_pressed("move_left"):
+		animation = "walk-LR"
+		$AnimatedSprite2D.flip_h = false
+	elif Input.is_action_pressed("move_left"):
 		velocity.x -= 1
+		animation = "walk-LR"
+		$AnimatedSprite2D.flip_h = true
+
 	if Input.is_action_pressed("move_down"):
 		velocity.y += 1
-	if Input.is_action_pressed("move_up"):
+		animation = "down"
+	elif Input.is_action_pressed("move_up"):
 		velocity.y -= 1
+		animation = "up"
 
-	if velocity.length() > 0: #If the player is moving play animation
+	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite2D.play()
-	else:
-		$AnimatedSprite2D.animation = "idle"
+
+	$AnimatedSprite2D.animation = animation
+
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
-	
-	if velocity.x != 0: #Not standing still
-		$AnimatedSprite2D.animation = "walk-LR"
-		$AnimatedSprite2D.flip_v = false
-		# If moving less than zero (left) then flip sprite
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-	if velocity.y < 0: 
-		$AnimatedSprite2D.animation = "up"
-	elif velocity.y > 0:
-		$AnimatedSprite2D.animation = "down"
-		
