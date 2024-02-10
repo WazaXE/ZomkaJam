@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://buafetqttwyrg"]
 
-[ext_resource type="Texture2D" path="res://WordArt/DungeonEnvironment_V1.png" id="1_kpns1"]
-[ext_resource type="Texture2D" path="res://WordArt/PointLight.png" id="2_g8nod"]
+[ext_resource type="Texture2D" uid="uid://dyxxr1dpc4223" path="res://WordArt/DungeonEnvironment_V1.png" id="1_kpns1"]
+[ext_resource type="Texture2D" uid="uid://bgl8ag21n5khj" path="res://WordArt/PointLight.png" id="2_g8nod"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s0eux"]
 texture = ExtResource("1_kpns1")
