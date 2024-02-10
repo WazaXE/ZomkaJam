@@ -1,5 +1,4 @@
 extends Area2D
-signal hit #This signals that collider "hit" and enemy. Detect Collision
 
 @export var speed = 200
 var screen_size
@@ -38,6 +37,3 @@ func _process(delta):
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
-func _on_detection_area_body_entered(body):
-	emit_signal("hit", body)
-	print("Enemy and Player Colliding")

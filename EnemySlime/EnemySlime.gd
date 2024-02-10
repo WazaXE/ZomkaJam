@@ -29,3 +29,7 @@ func _on_detection_area_body_shape_exited(body_rid, body, body_shape_index, loca
 
 func _on_player_body_entered(body):
 	pass # Replace with function body.
+
+
+func _on_player_area_entered(area):
+	pass # Replace with function body.
