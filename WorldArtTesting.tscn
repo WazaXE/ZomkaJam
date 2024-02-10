@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://1644a3qgiq50"]
+[gd_scene load_steps=6 format=3 uid="uid://buafetqttwyrg"]
 
 [ext_resource type="Texture2D" uid="uid://dyxxr1dpc4223" path="res://WordArt/DungeonEnvironment_V1.png" id="1_kpns1"]
 [ext_resource type="Texture2D" uid="uid://bgl8ag21n5khj" path="res://WordArt/PointLight.png" id="2_g8nod"]
