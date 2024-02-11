@@ -1,8 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://br0wfnnlvmj8y"]
+[gd_scene load_steps=18 format=3 uid="uid://br0wfnnlvmj8y"]
 
 [ext_resource type="Script" path="res://player/playercbd2.gd" id="1_w6hkw"]
 [ext_resource type="Texture2D" uid="uid://bc3yeex8ut0q5" path="res://player/walkSheet.png" id="2_wvekd"]
 [ext_resource type="Texture2D" uid="uid://dls7kf4cm6emi" path="res://player/idleSteal.png" id="3_hruqh"]
+[ext_resource type="Texture2D" uid="uid://dbdg1ibc8whnv" path="res://Ui/Heart0.png" id="4_bh83d"]
+[ext_resource type="Script" path="res://scenes/HealthScript.gd" id="4_bpuxp"]
+[ext_resource type="Texture2D" uid="uid://0cn3k0mm27lv" path="res://Ui/Heart1.png" id="5_g482d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_to44e"]
 atlas = ExtResource("2_wvekd")
@@ -96,6 +99,45 @@ size = Vector2(12.625, 32)
 [node name="PlayerNode" type="CharacterBody2D"]
 script = ExtResource("1_w6hkw")
 metadata/_edit_group_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("4_bpuxp")
+
+[node name="Health_A" type="Node2D" parent="Camera2D"]
+position = Vector2(-535, -290)
+
+[node name="FullHeart_Sprite2D" type="Sprite2D" parent="Camera2D/Health_A"]
+texture = ExtResource("4_bh83d")
+
+[node name="EmptyHeart_Sprite2D" type="Sprite2D" parent="Camera2D/Health_A"]
+texture = ExtResource("5_g482d")
+
+[node name="Health_B" type="Node2D" parent="Camera2D"]
+position = Vector2(-499, -290)
+
+[node name="FullHeart_Sprite2D" type="Sprite2D" parent="Camera2D/Health_B"]
+texture = ExtResource("4_bh83d")
+
+[node name="EmptyHeart_Sprite2D" type="Sprite2D" parent="Camera2D/Health_B"]
+texture = ExtResource("5_g482d")
+
+[node name="Health_C" type="Node2D" parent="Camera2D"]
+position = Vector2(-463, -290)
+
+[node name="FullHeart_Sprite2D" type="Sprite2D" parent="Camera2D/Health_C"]
+texture = ExtResource("4_bh83d")
+
+[node name="EmptyHeart_Sprite2D" type="Sprite2D" parent="Camera2D/Health_C"]
+texture = ExtResource("5_g482d")
+
+[node name="Health_D" type="Node2D" parent="Camera2D"]
+position = Vector2(-427, -290)
+
+[node name="FullHeart_Sprite2D" type="Sprite2D" parent="Camera2D/Health_D"]
+texture = ExtResource("4_bh83d")
+
+[node name="EmptyHeart_Sprite2D" type="Sprite2D" parent="Camera2D/Health_D"]
+texture = ExtResource("5_g482d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1s7d2")

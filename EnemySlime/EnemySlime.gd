@@ -6,7 +6,7 @@ var player = null
 var patrol_points = [] # List to store patrol points
 var current_patrol_point_index = 0 # Index to keep track of current patrol point
 
-# Called when the node enters the scene tree for the first time.
+# Looks for player
 func _ready():
 	player = get_node("/root/WorldArtTesting/PlayerNode")  # Adjust the path to your player character node
 	if player:
@@ -14,7 +14,7 @@ func _ready():
 	else:
 		print("Player not found!")
 	
-	# Define your patrol points here (adjust these values as needed)
+	
 	patrol_points = [
 		Vector2(100, 100),
 		Vector2(300, 100),
@@ -23,35 +23,43 @@ func _ready():
 	]
 
 func _physics_process(delta):
+	
+	move_and_slide() #FAKING BULLSHIT THIS IS JUST COLLITION!
+	
 	var direction = Vector2.ZERO # Initialize direction vector
 	if player_chase and player:
 		direction = player.global_position - global_position
-		direction = direction.normalized()  # Normalize the direction vector
-		position += direction * speed * delta
-		$AnimatedSprite2D.play("walk")
+		if direction.length() > 10: # Move only if the player is not very close
+			direction = direction.normalized()  # Normalize the direction vector
+			position += direction * speed * delta
+			$AnimatedSprite2D.play("walk")
 	else:
 		# If not chasing player, move towards the next patrol point
 		var patrol_point = patrol_points[current_patrol_point_index]
 		direction = patrol_point - global_position
-		direction = direction.normalized()  # Normalize the direction vector
-		position += direction * speed * delta
-		$AnimatedSprite2D.play("walk")
-		
-		# Check if slime reached the current patrol point
-		if global_position.distance_to(patrol_point) < 10:
+		if direction.length() < 10: # Check if slime reached the current patrol point
 			current_patrol_point_index = (current_patrol_point_index + 1) % patrol_points.size() # Move to next patrol point
+		else:
+			direction = direction.normalized()  # Normalize the direction vector
+			position += direction * speed * delta
+			$AnimatedSprite2D.play("walk")
 	
-	# Flip sprite based on movement direction
-	$AnimatedSprite2D.flip_h = direction.x > 0  # Flip sprite based on direction
+	$AnimatedSprite2D.flip_h = direction.x > 0  
 
 func _on_detection_area_body_entered(body):
-	if body.name == "PlayerCharacter":
+	if body.name == "PlayerNode":  
 		print("Player entered detection area")
 		player = body
 		player_chase = true
 
-func _on_detection_area_body_shape_exited(_body_rid, body, _body_shape_index, _local_shape_index):
-	if body == player:
-		player = null
+func _on_detection_area_body_exited(body):
+	if body.name == "PlayerNode":  
+		print("Player exited detection area")
 		player_chase = false
-		print("On Exit")
+		player = null
+		# Reset the patrol behavior
+		current_patrol_point_index = 0 #NOT WORKING
+
+
+func _on_camera_2d_2_visibility_changed():
+	pass # Replace with function body.

@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4c73c5blfyap"]
+
+[ext_resource type="Script" path="res://scenes/Health.gd" id="1_hyvp2"]
+[ext_resource type="Texture2D" uid="uid://dbdg1ibc8whnv" path="res://Ui/Heart0.png" id="1_xgpud"]
+[ext_resource type="Texture2D" uid="uid://0cn3k0mm27lv" path="res://Ui/Heart1.png" id="2_ovu08"]
+
+[node name="UIScene" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(53, 39)
+script = ExtResource("1_hyvp2")
+
+[node name="Health_A" type="Node2D" parent="Node2D"]
+
+[node name="FullHeart_Sprite2D" type="Sprite2D" parent="Node2D/Health_A"]
+texture = ExtResource("1_xgpud")
+
+[node name="EmptyHeart_Sprite2D" type="Sprite2D" parent="Node2D/Health_A"]
+texture = ExtResource("2_ovu08")
+
+[node name="Health_B" type="Node2D" parent="Node2D"]
+position = Vector2(36, 0)
+
+[node name="FullHeart_Sprite2D" type="Sprite2D" parent="Node2D/Health_B"]
+texture = ExtResource("1_xgpud")
+
+[node name="EmptyHeart_Sprite2D" type="Sprite2D" parent="Node2D/Health_B"]
+texture = ExtResource("2_ovu08")
+
+[node name="Health_C" type="Node2D" parent="Node2D"]
+position = Vector2(72, 0)
+
+[node name="FullHeart_Sprite2D" type="Sprite2D" parent="Node2D/Health_C"]
+texture = ExtResource("1_xgpud")
+
+[node name="EmptyHeart_Sprite2D" type="Sprite2D" parent="Node2D/Health_C"]
+texture = ExtResource("2_ovu08")
+
+[node name="Health_D" type="Node2D" parent="Node2D"]
+position = Vector2(108, 0)
+
+[node name="FullHeart_Sprite2D" type="Sprite2D" parent="Node2D/Health_D"]
+texture = ExtResource("1_xgpud")
+
+[node name="EmptyHeart_Sprite2D" type="Sprite2D" parent="Node2D/Health_D"]
+texture = ExtResource("2_ovu08")
