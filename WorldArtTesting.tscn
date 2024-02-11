@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://buafetqttwyrg"]
+[gd_scene load_steps=23 format=3 uid="uid://buafetqttwyrg"]
 
 [ext_resource type="Texture2D" uid="uid://dyxxr1dpc4223" path="res://WordArt/DungeonEnvironment_V1.png" id="1_kpns1"]
 [ext_resource type="Texture2D" uid="uid://bgl8ag21n5khj" path="res://WordArt/PointLight.png" id="2_g8nod"]
 [ext_resource type="Texture2D" uid="uid://dubj0sg3fn1ho" path="res://EnemySlime/Slime.png" id="3_3o581"]
 [ext_resource type="Script" path="res://EnemySlime/EnemySlime.gd" id="3_riqjc"]
 [ext_resource type="Script" path="res://Proto_Player/PlayerRaw.gd" id="5_0gfw7"]
+[ext_resource type="Texture2D" uid="uid://dls7kf4cm6emi" path="res://player/idleSteal.png" id="6_32gi6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5x5gb"]
 texture = ExtResource("1_kpns1")
@@ -179,7 +180,25 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_l4fyb"]
 radius = 10.883
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vda3"]
+atlas = ExtResource("6_32gi6")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_247qy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vda3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3c8rq"]
 
@@ -260,6 +279,7 @@ shape = SubResource("CircleShape2D_l4fyb")
 debug_color = Color(0, 0.588235, 0.756863, 0.419608)
 
 [node name="Player_Test" type="CharacterBody2D" parent="."]
+z_index = 1
 position = Vector2(331, 224)
 script = ExtResource("5_0gfw7")
 
