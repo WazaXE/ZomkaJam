@@ -8,7 +8,7 @@ var current_patrol_point_index = 0 # Index to keep track of current patrol point
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_node("/root/WorldArtTesting/Player_Test")  # Adjust the path to your player character node
+	player = get_node("/root/WorldArtTesting/PlayerNode")  # Adjust the path to your player character node
 	if player:
 		print("Player found:", player)
 	else:
