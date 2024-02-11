@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://buafetqttwyrg"]
+[gd_scene load_steps=19 format=3 uid="uid://buafetqttwyrg"]
 
 [ext_resource type="Texture2D" uid="uid://dyxxr1dpc4223" path="res://WordArt/DungeonEnvironment_V1.png" id="1_kpns1"]
 [ext_resource type="Texture2D" uid="uid://bgl8ag21n5khj" path="res://WordArt/PointLight.png" id="2_g8nod"]
 [ext_resource type="Texture2D" uid="uid://dubj0sg3fn1ho" path="res://EnemySlime/Slime.png" id="3_3o581"]
 [ext_resource type="Script" path="res://EnemySlime/EnemySlime.gd" id="3_riqjc"]
+[ext_resource type="PackedScene" uid="uid://ck3cdn0p67lui" path="res://player/player.tscn" id="5_xoayw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5x5gb"]
 texture = ExtResource("1_kpns1")
@@ -104,8 +105,7 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSet" id="TileSet_2s4da"]
 tile_size = Vector2i(64, 64)
-physics_layer_0/collision_layer = 3
-physics_layer_0/collision_mask = 3
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_5x5gb")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_467ny"]
@@ -223,7 +223,6 @@ texture = ExtResource("2_g8nod")
 
 [node name="Enemy_Slime" type="CharacterBody2D" parent="."]
 position = Vector2(573, 181)
-disable_mode = 2
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("3_riqjc")
@@ -240,17 +239,19 @@ animation = &"idle"
 frame_progress = 0.506578
 
 [node name="Detection_Area" type="Area2D" parent="Enemy_Slime"]
-disable_mode = 2
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Slime/Detection_Area"]
-light_mask = 3
-visibility_layer = 3
-z_index = 1
 scale = Vector2(13.3369, 12.3155)
 shape = SubResource("CircleShape2D_l4fyb")
 debug_color = Color(0, 0.588235, 0.756863, 0.419608)
+
+[node name="Player" parent="." instance=ExtResource("5_xoayw")]
+z_index = 1
+position = Vector2(489, 331)
+collision_layer = 3
+collision_mask = 3
 
 [connection signal="body_entered" from="Enemy_Slime/Detection_Area" to="Enemy_Slime" method="_on_detection_area_body_entered"]
 [connection signal="body_shape_exited" from="Enemy_Slime/Detection_Area" to="Enemy_Slime" method="_on_detection_area_body_shape_exited"]
