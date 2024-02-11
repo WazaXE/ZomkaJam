@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmjnh7u1ucdg7"]
-
-[ext_resource type="PackedScene" uid="uid://ck3cdn0p67lui" path="res://player/Player.tscn" id="1_r0d0x"]
-
-[node name="Node" type="Node"]
-
-[node name="Player" parent="." instance=ExtResource("1_r0d0x")]
-z_index = 1
