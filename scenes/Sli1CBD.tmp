@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://rjywvp5ld5xh"]
 
-[ext_resource type="Script" path="res://EnemySlime/EnemySlime.gd" id="1_ejl4j"]
 [ext_resource type="Texture2D" uid="uid://dubj0sg3fn1ho" path="res://EnemySlime/Slime.png" id="1_fa5ha"]
+[ext_resource type="Script" path="res://EnemySlime/SlimeTest.gd" id="1_uef1e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tufyt"]
 
@@ -71,8 +71,8 @@ animations = [{
 radius = 12.6134
 
 [node name="Slime" type="CharacterBody2D"]
-position = Vector2(54, 38)
-script = ExtResource("1_ejl4j")
+position = Vector2(57, 38)
+script = ExtResource("1_uef1e")
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
