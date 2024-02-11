@@ -1,10 +1,9 @@
-[gd_scene load_steps=35 format=3 uid="uid://buafetqttwyrg"]
+[gd_scene load_steps=24 format=3 uid="uid://buafetqttwyrg"]
 
 [ext_resource type="Texture2D" uid="uid://dyxxr1dpc4223" path="res://WordArt/DungeonEnvironment_V1.png" id="1_kpns1"]
 [ext_resource type="Texture2D" uid="uid://bgl8ag21n5khj" path="res://WordArt/PointLight.png" id="2_g8nod"]
 [ext_resource type="Texture2D" uid="uid://temds05j8in1" path="res://WordArt/Tendral.png" id="3_3klrl"]
-[ext_resource type="Texture2D" uid="uid://dubj0sg3fn1ho" path="res://EnemySlime/Slime.png" id="3_3o581"]
-[ext_resource type="Script" path="res://EnemySlime/EnemySlime.gd" id="3_riqjc"]
+[ext_resource type="PackedScene" uid="uid://rjywvp5ld5xh" path="res://scenes/Slime.tscn" id="3_86d30"]
 [ext_resource type="PackedScene" uid="uid://br0wfnnlvmj8y" path="res://scenes/player.tscn" id="7_gqmor"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5x5gb"]
@@ -219,73 +218,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ng0d7"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uujlj"]
-atlas = ExtResource("3_3o581")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_retvw"]
-atlas = ExtResource("3_3o581")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hd186"]
-atlas = ExtResource("3_3o581")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q08iu"]
-atlas = ExtResource("3_3o581")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5b3rr"]
-atlas = ExtResource("3_3o581")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eft65"]
-atlas = ExtResource("3_3o581")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6os8k"]
-atlas = ExtResource("3_3o581")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_vdiqd"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uujlj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_retvw")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hd186")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q08iu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5b3rr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eft65")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6os8k")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_l4fyb"]
-radius = 10.883
-
 [node name="WorldArtTesting" type="Node2D"]
 position = Vector2(3, 0)
 
@@ -340,40 +272,9 @@ sprite_frames = SubResource("SpriteFrames_5pv87")
 animation = &"Idel"
 frame_progress = 0.743837
 
-[node name="Enemy_Slime" type="CharacterBody2D" parent="."]
-position = Vector2(573, 181)
-disable_mode = 2
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("3_riqjc")
-
-[node name="EnemyCollider" type="CollisionShape2D" parent="Enemy_Slime"]
-position = Vector2(0, 8)
-scale = Vector2(-1.08634, -1.08634)
-shape = SubResource("CircleShape2D_ng0d7")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy_Slime"]
-z_index = 1
-sprite_frames = SubResource("SpriteFrames_vdiqd")
-animation = &"idle"
-frame_progress = 0.506578
-
-[node name="Detection_Area" type="Area2D" parent="Enemy_Slime"]
-disable_mode = 2
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Slime/Detection_Area"]
-light_mask = 3
-visibility_layer = 3
-z_index = 1
-scale = Vector2(13.3369, 12.3155)
-shape = SubResource("CircleShape2D_l4fyb")
-debug_color = Color(0, 0.588235, 0.756863, 0.419608)
-
 [node name="PlayerNode" parent="." instance=ExtResource("7_gqmor")]
 z_index = 1
-position = Vector2(654, 351)
+position = Vector2(615, 343)
 
 [node name="Camera2D" type="Camera2D" parent="PlayerNode"]
 position = Vector2(-1, 1)
@@ -385,5 +286,5 @@ rotation_smoothing_speed = 25.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[connection signal="body_entered" from="Enemy_Slime/Detection_Area" to="Enemy_Slime" method="_on_detection_area_body_entered"]
-[connection signal="body_shape_exited" from="Enemy_Slime/Detection_Area" to="Enemy_Slime" method="_on_detection_area_body_shape_exited"]
+[node name="Slime" parent="." instance=ExtResource("3_86d30")]
+position = Vector2(406, 238)
