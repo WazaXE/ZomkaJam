@@ -5,8 +5,8 @@ var screen_size
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	connect("body_entered", self, "_on_body_entered")
-	connect("body_exited", self, "_on_body_exited")
+	#connect("body_entered", self, "_on_body_entered")
+	#connect("body_exited", self, "_on_body_exited")
 
 func _physics_process(delta):
 	var velocity = Vector2.ZERO
