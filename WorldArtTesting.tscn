@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://buafetqttwyrg"]
+[gd_scene load_steps=35 format=3 uid="uid://buafetqttwyrg"]
 
 [ext_resource type="Texture2D" uid="uid://dyxxr1dpc4223" path="res://WordArt/DungeonEnvironment_V1.png" id="1_kpns1"]
 [ext_resource type="Texture2D" uid="uid://bgl8ag21n5khj" path="res://WordArt/PointLight.png" id="2_g8nod"]
+[ext_resource type="Texture2D" uid="uid://temds05j8in1" path="res://WordArt/Tendral.png" id="3_3klrl"]
 [ext_resource type="Texture2D" uid="uid://dubj0sg3fn1ho" path="res://EnemySlime/Slime.png" id="3_3o581"]
 [ext_resource type="Script" path="res://EnemySlime/EnemySlime.gd" id="3_riqjc"]
 [ext_resource type="PackedScene" uid="uid://br0wfnnlvmj8y" path="res://player.tscn" id="7_gqmor"]
@@ -112,6 +113,112 @@ sources/0 = SubResource("TileSetAtlasSource_5x5gb")
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_467ny"]
 polygon = PackedVector2Array(1139, -3, 575, 395, 440, 395, -15, -5)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u32n"]
+atlas = ExtResource("3_3klrl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evyir"]
+atlas = ExtResource("3_3klrl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwkvb"]
+atlas = ExtResource("3_3klrl")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2elk"]
+atlas = ExtResource("3_3klrl")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u2kc"]
+atlas = ExtResource("3_3klrl")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3gdg"]
+atlas = ExtResource("3_3klrl")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvdry"]
+atlas = ExtResource("3_3klrl")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78ney"]
+atlas = ExtResource("3_3klrl")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xva3"]
+atlas = ExtResource("3_3klrl")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wagao"]
+atlas = ExtResource("3_3klrl")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b3iq"]
+atlas = ExtResource("3_3klrl")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2s3t"]
+atlas = ExtResource("3_3klrl")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7uhx"]
+atlas = ExtResource("3_3klrl")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktgu5"]
+atlas = ExtResource("3_3klrl")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5pv87"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u32n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evyir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwkvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2elk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u2kc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3gdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvdry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78ney")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xva3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wagao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2b3iq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2s3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7uhx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktgu5")
+}],
+"loop": true,
+"name": &"Idel",
+"speed": 12.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ng0d7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uujlj"]
@@ -219,10 +326,19 @@ position = Vector2(16, 2)
 occluder = SubResource("OccluderPolygon2D_467ny")
 
 [node name="PointLight2D" type="PointLight2D" parent="Environment"]
-position = Vector2(577, 169)
+position = Vector2(576, 335)
 scale = Vector2(13.0754, 13.0754)
 color = Color(0.745098, 0.603922, 0.721569, 1)
 texture = ExtResource("2_g8nod")
+
+[node name="Objects" type="Node" parent="Environment"]
+
+[node name="E_Tendral" type="AnimatedSprite2D" parent="Environment/Objects"]
+z_index = 1
+position = Vector2(753, 321)
+sprite_frames = SubResource("SpriteFrames_5pv87")
+animation = &"Idel"
+frame_progress = 0.743837
 
 [node name="Enemy_Slime" type="CharacterBody2D" parent="."]
 position = Vector2(573, 181)
